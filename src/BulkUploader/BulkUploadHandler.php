@@ -11,7 +11,6 @@ use SilverStripe\Core\Convert;
 use SilverStripe\Versioned\RecursivePublishable;
 
 use SilverStripe\AssetAdmin\Controller\AssetAdmin;
-use SilverStripe\Versioned\RecursivePublishable;
 
 /**
  * Handles request from the GridFieldBulkUpload component.
