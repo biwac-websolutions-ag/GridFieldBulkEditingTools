@@ -8,8 +8,7 @@ use SilverStripe\Control\RequestHandler;
 use SilverStripe\Control\HTTPRequest;
 use SilverStripe\Control\HTTPResponse;
 use SilverStripe\Core\Convert;
-//use SilverStripe\Core\Injector\Injector;
-//use SilverStripe\ORM\DataObject;
+use SilverStripe\Versioned\RecursivePublishable;
 
 use SilverStripe\AssetAdmin\Controller\AssetAdmin;
 use SilverStripe\Versioned\RecursivePublishable;
@@ -91,8 +90,10 @@ class BulkUploadHandler extends RequestHandler
 
         $this->gridField->list->add($record);
 
-        if ($this->component->getAutoPublishDataObject() && $record->hasExtension(RecursivePublishable::class))
-        {
+        if (
+            $this->component->getAutoPublishDataObject()
+            && $record->hasExtension(RecursivePublishable::class)
+        ) {
             $record->publishRecursive();
         }
 
@@ -122,7 +123,7 @@ class BulkUploadHandler extends RequestHandler
             $bulkToolsResponse = new HTTPBulkToolsResponse(false, $this->gridField);
             $bulkToolsResponse->addSuccessRecord($record);
 
-            $responseData['bulkTools'] = json_decode($bulkToolsResponse->getBody());
+            $responseData['bulkTools'] = json_decode($bulkToolsResponse->getBody() ?? '');
             $uploadResponse->setBody(json_encode(array($responseData)));
         }
 

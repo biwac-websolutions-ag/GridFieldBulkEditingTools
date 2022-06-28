@@ -334,7 +334,6 @@ class HTTPBulkToolsResponse extends HTTPResponse
             );
 
             foreach ($this->successRecords as $record) {
-                //$data = array('id' => $record->ID, 'class' => $record->ClassName);
                 $data = array('id' => $record->ID, 'class' => str_replace('\\', '\\\\', $record->ClassName));
                 if (!$this->removesRows) {
                     $data['row'] = $this->getRecordGridfieldRow($record);
@@ -345,7 +344,7 @@ class HTTPBulkToolsResponse extends HTTPResponse
             $body['records']['failed'] = $this->failedRecords;
         }
 
-        if (isset($body['records']['success']) && count($body['records']['success']) === 0) {
+        if (isset($body['records']['success']) && count($body['records']['success'] ?? []) === 0) {
             $body['isWarning'] = true;
         }
 
@@ -361,7 +360,7 @@ class HTTPBulkToolsResponse extends HTTPResponse
         $this->createBody();
         parent::outputBody();
     }
-    
+
     /**
      * @deprecated 3.1.0 This function was used to catch PHP Errors and inject additional information in the response
      */
