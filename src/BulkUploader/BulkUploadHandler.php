@@ -120,6 +120,7 @@ class BulkUploadHandler extends RequestHandler
             $record = $this->createDataObject($responseData['id']);
 
             $bulkToolsResponse = new HTTPBulkToolsResponse(false, $this->gridField);
+            $bulkToolsResponse->is_bulk_upload(true);
             $bulkToolsResponse->addSuccessRecord($record);
 
             $responseData['bulkTools'] = json_decode($bulkToolsResponse->getBody() ?? '');

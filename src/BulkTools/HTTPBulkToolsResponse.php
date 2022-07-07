@@ -53,6 +53,13 @@ class HTTPBulkToolsResponse extends HTTPResponse
      *
      * @var boolean
      */
+    protected $is_upload = false;
+
+    /**
+     * Does the bulk action removes rows?
+     *
+     * @var boolean
+     */
     protected $removesRows;
 
     /**
@@ -313,6 +320,10 @@ class HTTPBulkToolsResponse extends HTTPResponse
         return $row;
     }
 
+    public function is_bulk_upload($is = false){
+        $this->is_upload = $is;
+    }
+
     /**
      * Creates the response JSON body
      */
@@ -333,12 +344,14 @@ class HTTPBulkToolsResponse extends HTTPResponse
                 'failed' => array()
             );
 
-            foreach ($this->successRecords as $record) {
-                $data = array('id' => $record->ID, 'class' => str_replace('\\', '\\\\', $record->ClassName));
-                if (!$this->removesRows) {
-                    $data['row'] = $this->getRecordGridfieldRow($record);
+            if($this->is_upload){ //@todo temp solution
+                foreach ($this->successRecords as $record) {
+                    $data = array('id' => $record->ID, 'class' => str_replace('\\', '\\\\', $record->ClassName));
+                    if (!$this->removesRows) {
+                        $data['row'] = $this->getRecordGridfieldRow($record);
+                    }
+                    $body['records']['success'][] = $data;
                 }
-                $body['records']['success'][] = $data;
             }
 
             $body['records']['failed'] = $this->failedRecords;
