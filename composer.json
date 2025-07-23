@@ -27,11 +27,21 @@
         "silverstripe/framework": "^6.1",
         "silverstripe/asset-admin": "^3"
     },
+    "require-dev": {
+        "silverstripe/documentation-lint": "^1",
+        "silverstripe/standards": "^1",
+        "phpstan/extension-installer": "^1.3"
+    },
     "extra": {
         "expose": [
             "client/dist",
             "client/lang"
         ]
+    },
+    "config": {
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
     },
     "autoload": {
         "psr-4": {
@@ -39,9 +49,5 @@
             "Colymba\\BulkManager\\": "src/BulkManager/",
             "Colymba\\BulkUpload\\": "src/BulkUploader/"
         }
-    },
-    "require-dev": {
-        "silverstripe/standards": "^1",
-        "phpstan/extension-installer": "^1.3"
     }
 }
