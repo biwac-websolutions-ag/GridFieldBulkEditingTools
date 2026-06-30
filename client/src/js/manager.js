@@ -103,8 +103,8 @@ jQuery.entwine('colymba', ($) => {
 
       $.each(config, (configKey, configData) => {
         if (configKey !== value) {
-          const fontIconClasses = configData.buttonClasses.match(/font-icon-[^\s]+/g);
-          const nonFontIconClasses = configData.buttonClasses.split(' ').filter((item) => !fontIconClasses.includes(item));
+          const fontIconClasses = (configData.buttonClasses || '').match(/font-icon-[^\s]+/g);
+          const nonFontIconClasses = (configData.buttonClasses || '').split(' ').filter((item) => !(fontIconClasses || []).includes(item));
           $btn.removeClass(nonFontIconClasses);
           $icon.removeClass(fontIconClasses);
         }
