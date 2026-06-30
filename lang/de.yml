@@ -12,3 +12,5 @@ de:
     EDIT_SELECT_LABEL: Bearbeiten
     SELECT_ALL_LABEL: 'Alle auswählen'
     UNLINK_SELECT_LABEL: 'Verbindung entfernen'
+    PUBLISHED_RECORDS: '%1$d von %2$d Datensätze wurden veröffentlicht.'
+    UNPUBLISHED_RECORDS: '%1$d von %2$d Datensätzen wurden nicht veröffentlicht.'

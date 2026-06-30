@@ -114,7 +114,7 @@ class UnPublishHandler extends Handler
             $doneCount = count($response->getSuccessRecords() ?? []);
             $failCount = count($response->getFailedRecords() ?? []);
             $message = sprintf(
-                'UnPublished %1$d of %2$d records.',
+				_t('GRIDFIELD_BULK_MANAGER.UNPUBLISHED_RECORDS', 'UnPublished %1$d of %2$d records.'),
                 $doneCount,
                 $doneCount + $failCount
             );

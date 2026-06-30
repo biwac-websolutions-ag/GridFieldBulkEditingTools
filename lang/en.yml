@@ -16,4 +16,6 @@ en:
     SELECT_LABEL: Select
     UNLINK_SELECT_LABEL: Unlink
     UNPUBLISH_SELECT_LABEL: UnPublish
+    PUBLISHED_RECORDS: 'Published %1$d of %2$d records.'
+    UNPUBLISHED_RECORDS: 'Unpublished %1$d of %2$d records.'
   GRIDFIELD_BULK_UPLOAD: null

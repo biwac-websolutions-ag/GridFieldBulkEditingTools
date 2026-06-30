@@ -114,7 +114,7 @@ class PublishHandler extends Handler
             $doneCount = count($response->getSuccessRecords() ?? []);
             $failCount = count($response->getFailedRecords() ?? []);
             $message = sprintf(
-                'Published %1$d of %2$d records.',
+				_t('GRIDFIELD_BULK_MANAGER.PUBLISHED_RECORDS', 'Published %1$d of %2$d records.'),
                 $doneCount,
                 $doneCount + $failCount
             );
